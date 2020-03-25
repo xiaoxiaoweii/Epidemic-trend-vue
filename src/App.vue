@@ -10,26 +10,25 @@
 </template>
 
 <style>
-  #app{
+  /* #app{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  } */
+  #app {
+    text-align: center;
   }
-  .map{
+  /* .map{
    color: #ccc;
    font-size: 20px;
    margin: 0 auto;
    text-align: center;
-  }
+  } */
   .linkBar{
     margin-top: 50px;
   }
   .router-link-active{
     color: rgb(96, 174, 138);
-  }
-  .chart {
-    width: 1000px;
-    text-align: center;
   }
 </style>
