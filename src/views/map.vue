@@ -3,7 +3,6 @@
     <div id="chart1"></div>
   </div>
 </template>
-
 <script>
 // 但是在后端的话还是建议使用axios  因为后端上就可以成功获取到axios请求的数据 不会跨域
 // 导入jsonp插件
@@ -12,49 +11,65 @@ import jsonp from 'jsonp'
 import echarts from 'echarts'
 // 导入中国地图
 import 'echarts/map/js/china'
+// 导入江苏地图
+import 'echarts/map/js/province/jiangsu'
 // 导入世界地图
 import 'echarts/map/js/world'
 
 const option = {
   title:{
-    text:'vue实现疫情地图',
+    // 地图标题
+    text:'疫情地图',
+    // 是否显示标题
     show:true,
-    // x轴居中
+    // 副标题
+    subtext: '累计确诊病例数，包含治愈、死亡',
     x:'center',
+    // 标题样式
     textStyle:{
-      color:'#e74c3c'
+      color:'#e74c3c',
+      fontStyle: 'normal',
+      fontFamily: 'Microsoft YaHei'
     }
   },
   tooltip:{
-    //   鼠标移入时的提示信息，  一定要知道的是它和series数据是平级的
+    //  鼠标移入时的提示信息、
+    // 类型
     tigger:'item',
+    // b 区域名称 c 合并数值 a 系列名称
     formatter:'地区：{b}<br />感染人口: {c}'
   },
+  //  对应的数据
   series:[
-//   series配置出来了以后才会有地图显示  所以series是关键
     {
+      //   地图类型
       type:'map',
-    //   图标类型
+      //  地图内容
       map:'china',
-    //   什么图标
+      // 地图显示的数据
       data:[
-        { name:'北京', value:'200'}
+        { name:'', value:''}
       ],
+      // 在地图上添加标签 坐标轴指示器的文本标签。
       label:{
-        //   设置地图每一个角落的名字
         show:true,
-        color:'red'
+        color:'#000000',
+        position: 'bottom'
       },
+      // 地图区域的多边形 图形样式。
       itemStyle:{
-        borderColor:'blue'
+        borderColor:'#b1b1b1'
       },
+      // 当前视角的缩放比例比例
+      zoom: 1,
+      // 高亮状态下的地图颜色
       emphasis:{
         label:{
-          color:'#fff',
+          color:'#000000',
           fontSize:'10px'
         },
         itemStyle:{
-          areaColor:'green'
+          areaColor:'#c7fffd'
         }
       }
     }
@@ -66,19 +81,19 @@ const option = {
     // 设置不用的段位
     pieces: [
       // 不指定 max，表示 max 为无限大（Infinity）。
-      {min: 20000},
-      {min: 10000, max: 20000},
+      {min: 10000},
       {min: 1000, max: 9999},
-      {min: 500, max: 999},
-      {min: 100, max: 500},
+      {min: 100, max: 999},
       {min: 10, max: 99},
       {min: 1, max: 9},
       {value:0}
     ],
     inRange: {
     // 范围所对应的颜色
-      color: ['#fff', '#ffaa85', '#ff7b69', '#cc2929', '#FF7F50', '#8c0d0d', '#660208']
-    }
+      color: ['#fff', '#ffaa85', '#ff7b69', '#cc2929', '#8c0d0d', '#660208']
+    },
+    itemWidth: 10,
+    itemHeight: 10
   }
 }
 export default {
@@ -87,7 +102,6 @@ export default {
     // this.$http.get('http://www.baidu.com', (res)=>{
     //   console.log(res.data)
     // })
-    //   这个是生命周期函数
     this.mycharts = echarts.init(document.getElementById('chart1'))
   },
   data(){
@@ -98,16 +112,21 @@ export default {
   methods:{
     getMsg(){
       jsonp('http://interface.sina.cn/news/wap/fymap2020_data.d.json?_=1580892522427', (err, data)=>{
+        console.log(data.data)
         const list = data.data.list.map((item)=>{
           return {
             name:item.name,
             value:item.value
           }
         })
+        console.log(list)
+        // 将数据给到地图
         option.series[0].data = list
+        console.log(option.series[0].map)
+        // 在mounted加载设置
         this.mycharts.setOption(option)
       })
-    }  
+    }
   }
 }
 </script>

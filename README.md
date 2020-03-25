@@ -1,4 +1,4 @@
-# epidemicmap
+# epidemic
 
 ## Project setup
 ```

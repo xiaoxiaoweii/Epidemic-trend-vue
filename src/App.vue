@@ -3,7 +3,9 @@
     <div class="linkBar">
       <router-link class="map" to="/map">累计确诊</router-link>
     </div>
-    <router-view></router-view>
+    <div class="chart">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -18,11 +20,16 @@
    color: #ccc;
    font-size: 20px;
    margin: 0 auto;
+   text-align: center;
   }
   .linkBar{
     margin-top: 50px;
   }
   .router-link-active{
     color: rgb(96, 174, 138);
+  }
+  .chart {
+    width: 1000px;
+    text-align: center;
   }
 </style>
