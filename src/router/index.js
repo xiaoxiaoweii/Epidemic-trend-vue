@@ -6,6 +6,7 @@ import axios from 'axios'
 import Lines from '../views/line.vue'
 import map1 from '../views/map1.vue'
 import mapWorld from '../views/mapWorld.vue'
+import lineWorld from '../views/lineWorld.vue'
 
 Vue.prototype.$http = axios
 
@@ -16,6 +17,7 @@ const routes = [
   { path: '/map', component: map },
   { path: '/map1', component: map1 },
   { path: '/line', component: Lines },
+  { path: '/lineWorld', component: lineWorld },
   { path: '/mapWorld', component: mapWorld }
   // { path: '/basicLayout', component: basicLayout }
 ]

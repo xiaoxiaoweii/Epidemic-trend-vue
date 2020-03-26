@@ -1,6 +1,6 @@
 <template>
   <div class="root" style="background:#ECECEC; padding:10px">
-    <a-card class="card" title="国内疫情" :bordered="false" style="width: 80%">
+    <a-card class="card" :bordered="false" style="width: 80%">
       <div>
         <div id="chart1"></div>
       </div>
@@ -22,7 +22,7 @@ import 'echarts/map/js/province/jiangsu';
 import 'echarts/map/js/world';
 
 let nameMap = {
-  
+
 }
 
 
@@ -72,7 +72,7 @@ const option = {
         borderColor: '#b1b1b1'
       },
       // 当前视角的缩放比例比例
-      zoom: 1,
+      zoom: 1.2,
       // 高亮状态下的地图颜色
       emphasis: {
         label: {

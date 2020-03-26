@@ -1,6 +1,6 @@
 <template>
   <div class="root" style="background:#ECECEC; padding:10px">
-    <a-card class="card" title="国内疫情" :bordered="false" style="width: 80%">
+    <a-card class="card" :bordered="false" style="width: 80%">
       <div>
         <div id="chart1"></div>
       </div>
@@ -24,7 +24,7 @@ import 'echarts/map/js/world';
 const option = {
   title: {
     // 地图标题
-    text: '',
+    text: '国内疫情',
     // 是否显示标题
     show: true,
     // 副标题
@@ -123,17 +123,17 @@ export default {
       jsonp(
         'http://interface.sina.cn/news/wap/fymap2020_data.d.json?_=1580892522427',
         (err, data) => {
-          console.log(data.data);
+          // console.log(data.data);
           const list = data.data.list.map(item => {
             return {
               name: item.name,
               value: item.value
             };
           });
-          console.log(list);
+          // console.log(list);
           // 将数据给到地图
           option.series[0].data = list;
-          console.log(option.series[0].map);
+          // console.log(option.series[0].map);
           // 在mounted加载设置
           this.mycharts.setOption(option);
         }
