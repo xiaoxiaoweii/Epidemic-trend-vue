@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="linkBar">
-      <router-link class="map" to="/map">累计确诊</router-link>
+      <router-link class="map" to="/map">国内确诊</router-link>
+      <router-link class="mapWorld" to="/mapWorld">全球确诊</router-link>
       <router-link class="line" to="/line">线图</router-link>
     </div>
     <div class="chart">

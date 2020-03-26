@@ -21,6 +21,11 @@ import 'echarts/map/js/province/jiangsu';
 // 导入世界地图
 import 'echarts/map/js/world';
 
+let nameMap = {
+  
+}
+
+
 const option = {
   title: {
     // 地图标题
@@ -50,7 +55,7 @@ const option = {
       //   地图类型
       type: 'map',
       //  地图内容
-      map: 'china',
+      map: 'world',
       // 移动位置
       layoutCenter: ['50%', '50%'],
       layoutSize: 650,
