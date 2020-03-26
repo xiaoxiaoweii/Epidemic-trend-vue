@@ -50,6 +50,9 @@ const option = {
       type: 'map',
       //  地图内容
       map: 'china',
+      // 移动位置
+      layoutCenter: ['50%', '50%'],
+      layoutSize: 650,
       // 地图显示的数据
       data: [{ name: '', value: '' }],
       // 在地图上添加标签 坐标轴指示器的文本标签。
@@ -63,7 +66,7 @@ const option = {
         borderColor: '#b1b1b1'
       },
       // 当前视角的缩放比例比例
-      zoom: 1,
+      zoom: 0.8,
       // 高亮状态下的地图颜色
       emphasis: {
         label: {
@@ -96,6 +99,9 @@ const option = {
     },
     itemWidth: 10,
     itemHeight: 10
+  },
+  legend: {
+    bottom: '500px'
   }
 };
 export default {
@@ -143,7 +149,7 @@ export default {
   align-items: center;
 }
 #chart1 {
-  // width: 100%;
+  width: 100%;
   height: 800px;
   text-align: center;
 }
